@@ -1,0 +1,21 @@
+<ion-view view-title="Mapa Angular">
+  <ion-content scroll="false">
+      <div class="test-container">
+          <button ng-if="!map.dragging"
+               class="button button-assertive" ng-click="addMarkers()">Add markers</button>
+          <ui-gmap-google-map
+                  center='map.center'
+                  zoom="map.zoom"
+                  control="map.control"
+                  dragging="map.dragging"
+                  options="map.options">
+
+              <ui-gmap-markers models="markers" idKey="'id'" coords="'self'">
+              </ui-gmap-markers>
+
+              <!-- other ui-gmap-directives here -->
+
+          </ui-gmap-google-map>
+      </div>
+  </ion-content>
+</ion-view>
