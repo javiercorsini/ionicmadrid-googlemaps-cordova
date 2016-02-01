@@ -1,0 +1,11 @@
+<ion-view view-title="Browse">
+    <ion-content scroll="false">
+        <div id="gm_map" class="native-google-maps">
+            <div id="itt-map-img">
+                <img id="pepe" src="" />
+            </div>
+            <button ng-if="!map.isCameraMoving"
+                    class="button button-assertive" ng-click="addMarkers()">Add markers</button>
+        </div>
+    </ion-content>
+</ion-view>

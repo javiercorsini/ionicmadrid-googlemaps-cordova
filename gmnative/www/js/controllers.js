@@ -1,14 +1,26 @@
 angular.module('starter.controllers', [])
 
-    .controller('Map1Controller', function ($scope, MapManager) {
+    .controller('MapController', function ($scope, MapManager) {
+
+        $scope.map = MapManager.getMapData();
+        $scope.addMarkers = function() {
+            MapManager.setMarker({latitude: 40.4530582, longitude: -3.6905332}, 'img/mapPin.png');
+            MapManager.setMarker({latitude: 40.8, longitude: -3.5}, 'img/mapPin.png');
+        };
 
         $scope.$on('$ionicView.beforeEnter', function () {
             MapManager.setDiv('gm_map');
+            MapManager.onMapReady(function() {
+
+            });
         });
 
         $scope.$on('$ionicView.enter', function () {
             MapManager.refreshLayout();
             MapManager.setClickable(true);
+            MapManager.onMapReady(function() {
+
+            });
         });
     })
 
@@ -21,7 +33,7 @@ angular.module('starter.controllers', [])
         function controlSideMenuVisibility() {
             $scope.$watch(function () {
                 return $ionicSideMenuDelegate.getOpenRatio();
-            }, function (newValue) {
+            }, function (newValue, oldValue) {
                 $scope.hideLeft = newValue == 0;
             });
         }

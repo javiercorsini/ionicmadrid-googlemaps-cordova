@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+angular.module('MapServices', [])
 
     .factory('MapManager', function($q, $timeout, $ionicPlatform, $interval) {
 
@@ -24,7 +24,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name setUserLocation
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Waits until the map is ready and tries to set the center of the map
          * in the users location
@@ -54,7 +54,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name getMapData
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Returns the map data object needed to update the elements
          * above the map screen
@@ -75,7 +75,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name initMap
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Initializes the Google Map once the device is ready
          * @param {string} mapDivId the id of the map div
@@ -90,6 +90,7 @@ angular.module('starter.services', [])
                         map.setMyLocationEnabled(false);
                         map.setCompassEnabled(true);
                         map.setBackgroundColor('white');
+                        map.setDebuggable(true);
 
                         mapManager.setClickable(false); // The map is disabled by default
                         mapManager.clear(); // Clear all markup just in case
@@ -112,7 +113,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name onMapReady
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * It executes the given callback function when the map is initialized and ready
          * @param {function} cb the function to be called when the map is ready
@@ -130,7 +131,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name executeOnMapReadyCallbacks
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @private
          * @description
          * Executes callbacks waiting for the map to be ready and removes them from the internal array
@@ -144,7 +145,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name setClickable
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Enables or disables the map
          * @param {boolean} clickable enable or disable the map
@@ -156,7 +157,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name isDom
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @private
          * @description
          * Checks if a given element is a DOM element
@@ -170,7 +171,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name setDiv
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Associates the map to the given div
          * @param {string} newMapDivId the id to associate the map to
@@ -196,7 +197,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name addListener
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Attaches a new listener function to a given event. Example event types:
          *
@@ -215,7 +216,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name setCenter
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Sets the center of the map to the given coordinates and changes the map address
          * stored in the mapData object
@@ -250,7 +251,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name getCenter
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Returns the center of the map
          *
@@ -269,7 +270,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name getLatLng
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @private
          * @description
          * Utility function to get the coordinates as a plugin.google.maps.LatLng
@@ -287,7 +288,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name getMyLocation
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Gets the device's location and returns it to the callback. The
          * returned object has the following format:
@@ -320,7 +321,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name clearMarkers
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Removes all markers from the map
          */
@@ -338,7 +339,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name getMarkersCount
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Returns the number of active markers.
          * @return {number} the number of markers
@@ -350,7 +351,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name clear
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Clears all data within the map
          */
@@ -364,7 +365,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name setMarker
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Set's a marker within the map in the given position and with the supplier logo
          * @param {Object} position the coordinates of the marker
@@ -376,7 +377,7 @@ angular.module('starter.services', [])
 
             var deferred = $q.defer();
 
-            createMapIcon(iconUrl).then(function(iconDataUrl) {
+            //createMapIcon(iconUrl).then(function(iconDataUrl) {
 
                 map.addMarker({
                     position: getLatLng(position),
@@ -385,17 +386,18 @@ angular.module('starter.services', [])
                          * need to add www/ before the icons path. Plugin google maps needs the
                          * www before the relative route (don't ask me why)
                          * url: 'www/' + iconPath */
-                        url: iconDataUrl,
+                        //url: iconDataUrl,
+                        url: 'www/' + iconUrl,
                         size: {
-                            width: 27,
-                            height: 27
+                            width: 47,
+                            height: 47
                         }
                     }
                 }, function(marker) {
                     markers.push(marker);
                     deferred.resolve(marker);
                 });
-            });
+            //});
 
             return deferred.promise;
         };
@@ -403,7 +405,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name createMapIcon
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @private
          * @description
          * Creates an icon via URL data from the given supplier Logo
@@ -442,7 +444,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name getCameraPosition
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Retrieves the position of the native map's camera
          * @returns {Object} returns a promise. The promise returns the
@@ -471,7 +473,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name setZoom
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @param {number} zoom the new zoom of the map
          * @description
          * Changes the map zoom
@@ -485,7 +487,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name refreshLayout
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Refreshes the map layout
          */
@@ -503,7 +505,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name clearPolyline
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Removes polyline from the map
          */
@@ -513,112 +515,10 @@ angular.module('starter.services', [])
                 mapPolyline = null;
             }
         };
-
-        /**
-         * @ngdoc method
-         * @name bestWay
-         * @methodOf ittBookingServices.service:MapManager
-         * @param {object} origin the origin of the booked ride
-         * @param {object} destination the destination of the booked ride
-         * @description
-         * Gets the route of the booked ride of client and adds a polyline to map
-         */
-        mapManager.bestWay = function(origin, destination) {
-            var directionsService = new google.maps.DirectionsService();
-
-            var request = {
-                origin: origin.latitude + ',' + origin.longitude,
-                destination: destination.latitude + ',' + destination.longitude,
-                optimizeWaypoints: true,
-                travelMode: google.maps.TravelMode.DRIVING
-            };
-
-            directionsService.route(request, function(response, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
-                    var points = [];
-                    var legs = response.routes[0].legs;
-                    for (var i = 0; i < legs.length; i++) {
-                        var steps = legs[i].steps;
-                        for (var j = 0; j < steps.length; j++) {
-                            var pointsDecoded = decodePolyline(steps[j].polyline.points);
-                            for (var k = 0; k < pointsDecoded.length; k++) {
-                                points.push(pointsDecoded[k]);
-                            }
-                        }
-                    }
-
-                    mapManager.clearPolyline();
-
-                    map.addPolyline({
-                        points: points,
-                        color: '#D358F7',
-                        width: 5,
-                        geodesic: true
-                    }, function(polyline) {
-                        mapPolyline = polyline;
-                    });
-
-                }
-            });
-        };
-
-        /**
-         * @name decodePolyline
-         * @methodOf ittBookingServices.service:MapManager
-         * @param {String} str encoded polyline representation of the step
-         * @param {Number} precision to calculate latitude and longitude. If not specified, precision defaults to 5
-         * @private
-         * @description
-         * Decodes to a LatLng array
-         */
-        function decodePolyline(str, precision) {
-            var index = 0;
-            var lat = 0;
-            var lng = 0;
-            var coordinates = [];
-            var shift = 0;
-            var result = 0;
-            var byte = null;
-            var latitudeChange;
-            var longitudeChange;
-            var factor = Math.pow(10, precision || 5);
-
-            while (index < str.length) {
-                byte = null;
-                shift = 0;
-                result = 0;
-
-                do {
-                    byte = str.charCodeAt(index++) - 63;
-                    result |= (byte & 0x1f) << shift;
-                    shift += 5;
-                } while (byte >= 0x20);
-
-                latitudeChange = ((result & 1) ? ~(result >> 1) : (result >> 1));
-
-                shift = result = 0;
-
-                do {
-                    byte = str.charCodeAt(index++) - 63;
-                    result |= (byte & 0x1f) << shift;
-                    shift += 5;
-                } while (byte >= 0x20);
-
-                longitudeChange = ((result & 1) ? ~(result >> 1) : (result >> 1));
-
-                lat += latitudeChange;
-                lng += longitudeChange;
-
-                coordinates.push(new plugin.google.maps.LatLng(lat / factor, lng / factor));
-            }
-
-            return coordinates;
-        }
-
         /**
          * @ngdoc method
          * @name getZoom
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Returns the current zoom of the map
          * @return {Promise} Returns the promise. Once resolved it returns the zoom as the
@@ -637,7 +537,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name moveCamera
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @param {Object} center the coordinates of the new center for the camera
          * @param {number} center.latitude the latitude of the new center
          * @param {number} center.longitude the longitude of the new center
@@ -660,7 +560,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name setOriginToCameraCenter
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Sets the map origin and address to the current camera center
          * @returns {Promise} returns a promise. It does not return anything when resolved.
@@ -677,112 +577,8 @@ angular.module('starter.services', [])
 
         /**
          * @ngdoc method
-         * @name setConfirmMarker
-         * @methodOf ittBookingServices.service:MapManager
-         * @description
-         * Sets the confirm marker within the map in the given position
-         * @param {Object} position the coordinates of the marker
-         * @param {number} position.latitude the latitude of the marker
-         * @param {number} position.longitude the longitude of the marker
-         * @param {string} iconUrl the URL of the confirm marker
-         */
-        mapManager.setConfirmMarker = function(position, iconUrl) {
-            if (markerConfirm) {
-                markerConfirm.remove();
-                markerConfirm = null;
-            }
-
-            map.addMarker({
-                position: getLatLng(position),
-                icon: {
-                    /* If instead of using a data URL image we used a local image, we would
-                     * need to add www/ before the icons path. Plugin google maps needs the
-                     * www before the relative route (don't ask me why)
-                     * url: 'www/' + iconPath */
-                    url: 'www/' + iconUrl,
-                    size: {
-                        width: 14,
-                        height: 40
-                    }
-                }
-            }, function(marker) {
-                if (markerConfirm) {
-                    markerConfirm.remove();
-                    markerConfirm = null;
-                }
-
-                markerConfirm = marker;
-            });
-        };
-
-        var destinationMarker;
-
-        /**
-         * @ngdoc method
-         * @name setDestinationMarker
-         * @methodOf ittBookingServices.service:MapManager
-         * @description
-         * Sets the destination marker within the map in the given position
-         * @param {Object} position the coordinates of the marker
-         * @param {number} position.latitude the latitude of the marker
-         * @param {number} position.longitude the longitude of the marker
-         * @param {string} iconUrl the URL of the destination marker
-         */
-        mapManager.setDestinationMarker = function(position, iconUrl) {
-
-            mapManager.clearDestinationMarker();
-
-            map.addMarker({
-                position: getLatLng(position),
-                icon: {
-                    /* If instead of using a data URL image we used a local image, we would
-                     * need to add www/ before the icons path. Plugin google maps needs the
-                     * www before the relative route (don't ask me why)
-                     * url: 'www/' + iconPath */
-                    url: 'www/' + iconUrl,
-                    size: {
-                        width: 14,
-                        height: 40
-                    }
-                }
-            }, function(marker) {
-                mapManager.clearDestinationMarker();
-                destinationMarker = marker;
-            });
-        };
-
-        /**
-         * @ngdoc method
-         * @name clearDestinationMarker
-         * @methodOf ittBookingServices.service:MapManager
-         * @description
-         * Removes the destination marker map
-         */
-        mapManager.clearDestinationMarker = function() {
-            if (destinationMarker) {
-                destinationMarker.remove();
-                destinationMarker = null;
-            }
-        };
-
-        /**
-         * @ngdoc method
-         * @name showConfirmMarker
-         * @methodOf ittBookingServices.service:MapManager
-         * @param {boolean} show true to show the marker and false to hide it
-         * @description
-         * Shows or hides the confirm marker if it is present in the map
-         */
-        mapManager.showConfirmMarker = function(show) {
-            if (!markerConfirm) { return; }
-
-            markerConfirm.setVisible(show);
-        };
-
-        /**
-         * @ngdoc method
          * @name returnCameraToOrigin
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @description
          * Moves the map camera to the position set by origin
          */
@@ -800,7 +596,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name startIntervalsToDetectCameraMoving
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @private
          * @description
          * Fix to be able to hide the map icon when the user is moving the map.
@@ -817,7 +613,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name setCameraIsMovingWhenCameraChanges
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @private
          * @description
          * Changes the dragging property to true if the map camera has moved
@@ -848,7 +644,7 @@ angular.module('starter.services', [])
         /**
          * @ngdoc method
          * @name setCameraIsNotMovingWhenCameraStops
-         * @methodOf ittBookingServices.service:MapManager
+         * @methodOf MapServices.service:MapManager
          * @private
          * @description
          * Changes the dragging property to false if the map camera has stopped

@@ -9731,6 +9731,27 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+#itt-map-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: grey;
+  opacity: 0; }
+  #itt-map-img img {
+    width: 100%;
+    height: 100%; }
+
 .native-google-maps {
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  padding: 20px;
+  position: relative; }
+  .native-google-maps .button {
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    left: 50%;
+    margin-left: -75px;
+    width: 150px;
+    z-index: 2; }

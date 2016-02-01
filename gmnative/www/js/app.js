@@ -7,7 +7,7 @@
 angular.module('starter', [
     'ionic',
     'starter.controllers',
-    'starter.services'])
+    'MapServices'])
 
     .run(function ($ionicPlatform, MapManager) {
         $ionicPlatform.ready(function () {
@@ -46,12 +46,12 @@ angular.module('starter', [
                 }
             })
 
-            .state('app.browse', {
-                url: '/browse',
+            .state('app.map', {
+                url: '/map',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/browse.html',
-                        controller: 'Map1Controller as mapCtrl1'
+                        templateUrl: 'templates/map.html',
+                        controller: 'MapController as mapCtrl'
                     }
                 }
             })
